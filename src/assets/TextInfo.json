@@ -1,0 +1,15 @@
+{
+    "title": "Company Suggestion Form",
+    "welcomeMessage": "We value your input and ideas to help improve our workplace and operations. Please take a moment to share your suggestions, and we will carefully consider each and one to enhance our company's success and work environment.",
+    "suggestionBoxTitle": "Suggestion Box",
+    "BottomMessage": "We appreciate your effort in helping us improve. Your feedback will be reviewed by the management team.",
+    "fields": {
+        "name": "Name:",
+        "department": "Department:",
+        "q5": "Please describe your suggestion:",
+        "q6": "What potential benefits do you foresee if this suggestion is implemented?",
+        "q7": "Do you have any ideas for hos this suggestion could be implemented?",
+        "q8": "Any Additional Comments?"
+    },
+    "submitButton": "Submit Suggestion"
+}
