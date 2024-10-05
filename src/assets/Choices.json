@@ -1,0 +1,26 @@
+[
+  {
+    "value": "Work Environment",
+    "label": "Work Environment"
+  },
+  {
+    "value": "Process Improvement",
+    "label": "Process Improvement"
+  },
+  {
+    "value": "Emplyee Welfare",
+    "label": "Emplyee Welfare"
+  },
+  {
+    "value": "MCustomer Service",
+    "label": "Customer Service"
+  },
+  {
+    "value": "Product/Service Improvement",
+    "label": "Product/Service Improvement"
+  },
+  {
+    "value": "Other",
+    "label": "Other"
+  }
+]
