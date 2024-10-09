@@ -8,9 +8,10 @@ import "react-toastify/dist/ReactToastify.css";
 const App = () => {
   // const { data: sessions, isLoading, error } = useGetSession();
   // const data = sessions?.data;
+
   const [sessionData, setSessionData] = React.useState({
-    employeeid: sessionStorage.getItem("employeeid") || "",
-    department: sessionStorage.getItem("department") || "",
+    employeeid: localStorage.getItem("employeeid") || "",
+    department: localStorage.getItem("department") || "",
     date: "",
   });
 
@@ -18,9 +19,7 @@ const App = () => {
     try {
       const response = await fetch("/api/session/getsession"); // Ensure the endpoint is correct
       const data = await response.json();
-      const { employeeid, department, date } = data.data; // Ensure the structure is correct
-
-      console.log("Fetched Session Data:", employeeid, department, date); // Check what you get
+      const { employeeid, department,date } = data.data; // Ensure the structure is correct
 
       setSessionData({
         employeeid,
