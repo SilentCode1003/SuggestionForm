@@ -9,8 +9,8 @@ const App = () => {
   // const { data: sessions, isLoading, error } = useGetSession();
   // const data = sessions?.data;
   const [sessionData, setSessionData] = React.useState({
-    employeeid: "",
-    department: "",
+    employeeid: sessionStorage.getItem("employeeid") || "",
+    department: sessionStorage.getItem("department") || "",
     date: "",
   });
 
