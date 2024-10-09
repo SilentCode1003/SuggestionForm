@@ -1,39 +1,46 @@
-import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
-import './App.css';
-import DashboardPage from './pages/dashboard';
-import React from 'react'
-import './index.css'
-
-
-
-const HomePage = () => {
-  const navigate = useNavigate();
-
-  const handleButtonClick = () => {
-    navigate('/dashboard');
-  };
-
-  return (
-    <div className='bg-white'>
-      <button 
-        className="bg-blue-500 text-white font-semibold text-lg px-6 py-3 rounded-lg shadow-md hover:bg-blue-600 transition duration-200"
-        onClick={handleButtonClick}>Welcome to the Home Page</button>
-    </div>
-  );
-};
-
-const router = createBrowserRouter(
-  createRoutesFromElements(
-    <>
-      <Route path="/" element={<HomePage />} />
-      <Route path="dashboard" element={<DashboardPage />} />
-    </>
-  )
-);
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import DashboardPage from "./pages/dasboard"; // Make sure the path is correct
+import "./App.css";
+import "./index.css";
+import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
-  return <RouterProvider router={router} />;
+  const [sessionData, setSessionData] = React.useState({
+    employeeid: "",
+    department: "",
+    date: "",
+  });
+
+  const fetchSessionData = async () => {
+    try {
+      const response = await fetch("/api/session/getsession"); // Ensure the endpoint is correct
+      const data = await response.json();
+      const { employeeid, department, date } = data.data; // Ensure the structure is correct
+
+      console.log("Fetched Session Data:", employeeid, department, date); // Check what you get
+
+      setSessionData({
+        employeeid,
+        department,
+        date,
+      });
+    } catch (error) {
+      console.error("Error fetching session data:", error);
+    }
+  };
+
+  React.useEffect(() => {
+    fetchSessionData();
+  }, []);
+
+  return (
+    <div>
+      <Routes>
+        <Route path="/" element={<DashboardPage sessionData={sessionData} />} />
+      </Routes>
+    </div>
+  );
 };
 
 export default App;
