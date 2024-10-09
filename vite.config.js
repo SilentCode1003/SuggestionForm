@@ -8,7 +8,7 @@ export default defineConfig({
     port: 4080,
     proxy: {
       "/api": {
-        target: 'https://hrmis.5lsolutions.com',
+        target: 'http://localhost:3005',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ""),
       },

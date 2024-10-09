@@ -1,15 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 import SpinnerComponent from "./Spinner";
-import config from "../config/config";
+import { VITE_API_KEY } from "../config";
+
 
 const QuestionComponent = ({ formData, handleChange }) => {
   const [showOtherInput, setShowOtherInput] = React.useState(false);
-
   const [question, setQuestion] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
-
-
 
   React.useEffect(() => {
     const fetchQuestions = async () => {
@@ -19,7 +17,7 @@ const QuestionComponent = ({ formData, handleChange }) => {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({APK: config.APK}),
+          body: JSON.stringify({ APK: VITE_API_KEY }),
         });
         const data = await res.json();
 

@@ -1,11 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import config from "../config/config";
+import { VITE_API_KEY } from "../config";
+// import config from "../config";
 
 const Suggestion = ({ formData, handleChange, maxCharacters }) => {
   const [suggestionquestion, setQuestions] = React.useState([]);
-
-
 
   React.useEffect(() => {
     const fetchQuestions = async () => {
@@ -15,7 +14,7 @@ const Suggestion = ({ formData, handleChange, maxCharacters }) => {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({APK: config.APK}),
+          body: JSON.stringify({ APK: VITE_API_KEY }),
         });
         const data = await res.json();
 

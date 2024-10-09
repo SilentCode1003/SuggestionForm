@@ -6,18 +6,17 @@ import Suggestion from "../components/Suggestion";
 import TextInfo from "../assets/TextInfo.json";
 import Bottom from "../components/Bottom";
 import { ToastContainer, toast } from "react-toastify";
-import config from "../config/config";
 import PropTypes from "prop-types";
 
-const DashboardPage = ({ sessionData }) => {
+
+
+const DashboardPage = ({employeeid, department, date}) => {
   // Destructure sessionData from props
-  const employeeid = sessionData.employeeid;
   const [formData, setFormData] = React.useState({
-    employeeid: employeeid, // Use sessionData correctly
+    employeeid: '', // Use sessionData correctly
     suggestionareaname: "",
     suggestionareaid: "",
     details: [],
-    APK: config.APK,
   });
 
   const handleChange = (event) => {
@@ -71,6 +70,8 @@ const DashboardPage = ({ sessionData }) => {
       return;
     }
 
+    formData.employeeid = employeeid;
+
     console.log(formData);
 
     submitSuggestion(formData);
@@ -103,7 +104,7 @@ const DashboardPage = ({ sessionData }) => {
       <div className="bg-white w-full max-w-lg p-5 rounded-lg shadow-xl space-y-10">
         <ToastContainer />
         <TopInfo />
-        <UserInformation sessionData={sessionData} />
+        <UserInformation employeeid={employeeid} department={department} date={date} />
         <QuestionComponent formData={formData} handleChange={handleChange} />
         <Suggestion
           formData={formData}
@@ -124,7 +125,9 @@ const DashboardPage = ({ sessionData }) => {
 };
 
 DashboardPage.propTypes = {
-  sessionData: PropTypes.object.isRequired,
+  employeeid: PropTypes.string.isRequired,
+  department: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired,
 };
 
 export default DashboardPage;

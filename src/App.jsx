@@ -6,6 +6,8 @@ import "./index.css";
 import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
+  // const { data: sessions, isLoading, error } = useGetSession();
+  // const data = sessions?.data;
   const [sessionData, setSessionData] = React.useState({
     employeeid: "",
     department: "",
@@ -37,7 +39,16 @@ const App = () => {
   return (
     <div>
       <Routes>
-        <Route path="/" element={<DashboardPage sessionData={sessionData} />} />
+        <Route
+          path="/"
+          element={
+            <DashboardPage
+              employeeid={sessionData?.employeeid}
+              department={sessionData?.department}
+              date={sessionData?.date}
+            />
+          }
+        />
       </Routes>
     </div>
   );
