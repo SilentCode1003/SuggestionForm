@@ -7,7 +7,6 @@ import TextInfo from "../assets/TextInfo.json";
 import Bottom from "../components/Bottom";
 import { ToastContainer, toast } from "react-toastify";
 import PropTypes from "prop-types";
-import Cookies from "js-cookie";
 
 const DashboardPage = ({ employeeid, department, date, token }) => {
   // Destructure sessionData from props
@@ -16,7 +15,7 @@ const DashboardPage = ({ employeeid, department, date, token }) => {
     suggestionareaname: "",
     suggestionareaid: "",
     details: [],
-    token: "",
+    APK: "",
   });
 
   const handleChange = (event) => {
@@ -71,9 +70,7 @@ const DashboardPage = ({ employeeid, department, date, token }) => {
     }
 
     formData.employeeid = employeeid;
-    formData.token = token;
-
-    console.log(formData);
+    formData.APK = token;
 
     submitSuggestion(formData);
   };
