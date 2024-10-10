@@ -14,6 +14,7 @@ const App = () => {
     employeeid: "",
     department: "",
     date: "",
+    token: "",
   });
 
   const fetchSessionData = async () => {
@@ -31,6 +32,7 @@ const App = () => {
         employeeid: Cookies.get("employeeid"),
         department: Cookies.get("department"),
         date: date,
+        token: Cookies.get("token"),
       }));
 
       // console.log(sessionData);
@@ -53,6 +55,7 @@ const App = () => {
               employeeid={sessionData?.employeeid}
               department={sessionData?.department}
               date={sessionData?.date}
+              token={sessionData.token}
             />
           }
         />

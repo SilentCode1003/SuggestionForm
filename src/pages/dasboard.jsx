@@ -7,16 +7,16 @@ import TextInfo from "../assets/TextInfo.json";
 import Bottom from "../components/Bottom";
 import { ToastContainer, toast } from "react-toastify";
 import PropTypes from "prop-types";
+import Cookies from "js-cookie";
 
-
-
-const DashboardPage = ({employeeid, department, date}) => {
+const DashboardPage = ({ employeeid, department, date, token }) => {
   // Destructure sessionData from props
   const [formData, setFormData] = React.useState({
-    employeeid: '', // Use sessionData correctly
+    employeeid: "", // Use sessionData correctly
     suggestionareaname: "",
     suggestionareaid: "",
     details: [],
+    token: "",
   });
 
   const handleChange = (event) => {
@@ -71,6 +71,7 @@ const DashboardPage = ({employeeid, department, date}) => {
     }
 
     formData.employeeid = employeeid;
+    formData.token = token;
 
     console.log(formData);
 
@@ -104,7 +105,11 @@ const DashboardPage = ({employeeid, department, date}) => {
       <div className="bg-white w-full max-w-lg p-5 rounded-lg shadow-xl space-y-10">
         <ToastContainer />
         <TopInfo />
-        <UserInformation employeeid={employeeid} department={department} date={date} />
+        <UserInformation
+          employeeid={employeeid}
+          department={department}
+          date={date}
+        />
         <QuestionComponent formData={formData} handleChange={handleChange} />
         <Suggestion
           formData={formData}
@@ -128,6 +133,7 @@ DashboardPage.propTypes = {
   employeeid: PropTypes.string.isRequired,
   department: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
+  token: PropTypes.string.isRequired,
 };
 
 export default DashboardPage;
