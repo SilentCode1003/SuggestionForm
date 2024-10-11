@@ -29,11 +29,11 @@ const DashboardPage = ({ employeeid, department, date, token }) => {
   };
 
   const addDetails = (event) => {
-    const { id, value } = event.target;
+    const { name, value } = event.target;
 
     setFormData((prevData) => {
       const existingDetailIndex = prevData.details.findIndex(
-        (detail) => detail.question === id
+        (detail) => detail.question === name
       );
 
       if (existingDetailIndex !== -1) {
@@ -51,7 +51,7 @@ const DashboardPage = ({ employeeid, department, date, token }) => {
 
       return {
         ...prevData,
-        details: [...prevData.details, { question: id, answer: value }],
+        details: [...prevData.details, { question: name, answer: value }],
       };
     });
   };
@@ -66,6 +66,11 @@ const DashboardPage = ({ employeeid, department, date, token }) => {
 
     if (formData.details.length === 0) {
       toast.error("Please add some details about your suggestion.");
+      return;
+    }
+
+    if (!employeeid) {
+      toast.error("ID not found. Please try again later. Please login to your HRMIS employee access. Thank you!");
       return;
     }
 
@@ -100,7 +105,6 @@ const DashboardPage = ({ employeeid, department, date, token }) => {
   return (
     <div className="min-h-screen flex flex-col justify-start items-center bg-gradient-to-b from-blue-50 to-red-500 p-4">
       <div className="bg-white w-full max-w-lg p-5 rounded-lg shadow-xl space-y-10">
-        <ToastContainer />
         <TopInfo />
         <UserInformation
           employeeid={employeeid}
@@ -112,7 +116,6 @@ const DashboardPage = ({ employeeid, department, date, token }) => {
           formData={formData}
           handleChange={addDetails}
           maxCharacters={500}
-          fields={TextInfo.fields}
         />
         <button
           onClick={handleSubmit}
@@ -121,6 +124,7 @@ const DashboardPage = ({ employeeid, department, date, token }) => {
           {TextInfo.submitButton}
         </button>
         <Bottom />
+        <ToastContainer />
       </div>
     </div>
   );

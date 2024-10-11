@@ -10,7 +10,7 @@ const UserInformation = ({ employeeid, department, date }) => {
       <div className="flex flex-col">
         <div className="flex items-center space-x-2">
           <label htmlFor="name" className="text-gray-700 font-bold">
-            Name:
+            Employee ID:
           </label>
           <h2 className="text-black">{employeeid}</h2>{" "}
           {/* Fixed the property name */}

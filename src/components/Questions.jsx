@@ -21,7 +21,6 @@ const QuestionComponent = ({ formData, handleChange }) => {
         });
         const data = await res.json();
 
-        console.log(data);
 
         setQuestion(data.data);
       } catch (error) {
